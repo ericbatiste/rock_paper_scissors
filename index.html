@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Rock Paper Scissors</h1>
+    </header>
+    
+    <section class="player-info-container" id="playerUser">
+        <h2 class="player-header">Human</h2>
+        <p class="score">Wins:<br><span class="number">0</span></p>
+    </section>
+    
+    <section class="player-info-container" id="playerComp">
+        <h2 class="player-header">Computer</h2>
+        <p class="score">Wins:<br><span class="number">0</span></p>
+    </section>
+
+    <main class="game-container">
+        <h2>Choose your game!</h2>
+        <section class="choose-game-container">
+            <article class="game-choice" id="chooseClassicGame">
+                <h3>Classic</h3>
+                <p>
+                    Rock > Scissors<br>
+                    Scissors > Paper<br>
+                    Paper > Rock
+                </p>
+            </article>
+            
+            <article class="game-choice" id="chooseVariationGame">
+                <h3>Extended</h3>
+                <p>
+                    Alien > Shroom & Diamond<br>
+                    Shroom > Diamond & Dragon<br>
+                    Diamond > Dragon & Teddy<br>
+                    Dragon > Teddy & Alien<br>
+                    Teddy > Alien & Shroom
+                </p>
+            </article>
+        </section>
+
+        <section class="choose-token-container hidden" id="chooseClassicToken">
+            <div class="token">🪨</div>
+            <div class="token">📄</div>
+            <div class="token">✂️</div>
+        </section>
+        
+        <section class="choose-token-container hidden" id="chooseVariationToken">
+            <div class="token">👽</div>
+            <div class="token">🍄</div>
+            <div class="token">💎</div>
+            <div class="token">🐉</div>
+            <div class="token">🧸</div>
+        </section>
+
+    </main>
+    
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
