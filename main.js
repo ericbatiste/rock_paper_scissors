@@ -1,7 +1,10 @@
-var fighters = [
+var classicfighters = [
     {name: 'Rock', defeats: ['Scissors']},
     {name: 'Scissors', defeats: ['Paper']},
     {name: 'Paper', defeats: ['Rock']},
+]
+
+var expandedFighters = [
     {name: 'Alien', defeats: ['Shroom', 'Diamond']},
     {name: 'Shroom', defeats: ['Diamond', 'Dragon']},
     {name: 'Diamond', defeats: ['Dragon', 'Teddy']},
@@ -26,3 +29,9 @@ function updateUser(currentFighter, wins = 0, name = 'Human') {
         victor: false
     }
 }
+
+function getRandomFighter(fighters) {
+    return fighters[Math.floor(Math.random() * fighters.length)]
+}
+
+
