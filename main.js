@@ -23,7 +23,8 @@ var expandedFighters = [
     {name: 'Teddy', defeats: ['Alien', 'Shroom']}
 ]
 
-selectGameType.addEventListener('click', selectGame)
+selectGameType.addEventListener('click', selectGame);
+chooseGameBtn.addEventListener('click', returnToSelectGame);
 
 function selectGame(e) {
     var selectedGame = e.target.closest('article');
@@ -35,6 +36,16 @@ function selectGame(e) {
         toggleDisplay(selectGameType);
         toggleDisplay(selectExtendedFighter);
         toggleDisplay(chooseGameBtn);
+    }
+}
+
+function returnToSelectGame() {
+    toggleDisplay(selectGameType);
+    toggleDisplay(chooseGameBtn);
+    if (!selectClassicFighter.classList.contains('hidden')) {
+        selectClassicFighter.classList.add('hidden')
+    } else if (!selectExtendedFighter.classList.contains('hidden')) {
+        selectExtendedFighter.classList.add('hidden');
     }
 }
 
