@@ -25,8 +25,8 @@
 
     <main class="game-container">
         <h2>Choose your game!</h2>
-        <section class="choose-game-container">
-            <article class="game-choice" id="chooseClassicGame">
+        <section class="select-game-container">
+            <article class="game-choice" id="classicGame">
                 <h3>Classic</h3>
                 <p>
                     Rock > Scissors<br>
@@ -35,7 +35,7 @@
                 </p>
             </article>
             
-            <article class="game-choice" id="chooseVariationGame">
+            <article class="game-choice" id="extendedGame">
                 <h3>Extended</h3>
                 <p>
                     Alien > Shroom & Diamond<br>
@@ -47,13 +47,13 @@
             </article>
         </section>
 
-        <section class="choose-token-container hidden" id="chooseClassicToken">
+        <section class="choose-fighter-container hidden" id="classicFighters">
             <div class="token">🪨</div>
             <div class="token">📄</div>
             <div class="token">✂️</div>
         </section>
         
-        <section class="choose-token-container hidden" id="chooseVariationToken">
+        <section class="choose-fighter-container hidden" id="extendedFighters">
             <div class="token">👽</div>
             <div class="token">🍄</div>
             <div class="token">💎</div>
@@ -62,11 +62,9 @@
         </section>
 
     </main>
-    
-
     <footer>
-
+        <button class="btn hidden" id="chooseGameBtn">Choose Game</button>
+        <button class="btn hidden" id="resetScoreBtn">Reset Score</button>
     </footer>
-
 </body>
 </html>
