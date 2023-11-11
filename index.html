@@ -15,12 +15,12 @@
     
     <section class="player-info-container" id="playerUser">
         <h2 class="player-header">Human</h2>
-        <p class="score">Wins:<br><span class="number">0</span></p>
+        <p class="score">Wins:<br><span class="number" id="userWins">0</span></p>
     </section>
     
     <section class="player-info-container" id="playerComp">
         <h2 class="player-header">Computer</h2>
-        <p class="score">Wins:<br><span class="number">0</span></p>
+        <p class="score">Wins:<br><span class="number" id="compWins">0</span></p>
     </section>
 
     <main class="game-container">
@@ -60,6 +60,8 @@
             <div class="fighter" id="Dragon">🐉</div>
             <div class="fighter" id="Teddy">🧸</div>
         </section>
+
+        <section class="match-outcome hidden"></section>
 
     </main>
     <footer>

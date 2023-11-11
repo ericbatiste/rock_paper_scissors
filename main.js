@@ -1,33 +1,40 @@
+var banner = document.querySelector('#banner');
 var selectGameType = document.querySelector('.select-game-container');
 var selectClassicFighter = document.querySelector('#classicFighters');
 var selectExtendedFighter = document.querySelector('#extendedFighters');
-var banner = document.querySelector('#banner');
+var matchOutcome = document.querySelector('.match-outcome');
 var chooseGameBtn = document.querySelector('#chooseGameBtn');
+var userWins = document.querySelector('#userWins');
+var compWins = document.querySelector('#compWins');
 var resetScoreBtn = document.querySelector('#resetScoreBtn');
 
-var userFighter;
-var compFighter;
+var userCurrent;
+var compCurrent;
 
-var classicfighters = [
-    {name: 'Rock', defeats: ['Scissors']},
-    {name: 'Scissors', defeats: ['Paper']},
-    {name: 'Paper', defeats: ['Rock']},
+var classicFighters = [
+    {name: 'Rock', emoji: '🪨', defeats: ['Scissors']},
+    {name: 'Scissors', emoji: '✂️', defeats: ['Paper']},
+    {name: 'Paper', emoji: '📄', defeats: ['Rock']},
 ]
 
 var extendedFighters = [
-    {name: 'Alien', defeats: ['Shroom', 'Diamond']},
-    {name: 'Shroom', defeats: ['Diamond', 'Dragon']},
-    {name: 'Diamond', defeats: ['Dragon', 'Teddy']},
-    {name: 'Dragon', defeats: ['Teddy', 'Alien']},
-    {name: 'Teddy', defeats: ['Alien', 'Shroom']}
+    {name: 'Alien', emoji: '👽', defeats: ['Shroom', 'Diamond']},
+    {name: 'Shroom', emoji: '🍄', defeats: ['Diamond', 'Dragon']},
+    {name: 'Diamond', emoji: '💎', defeats: ['Dragon', 'Teddy']},
+    {name: 'Dragon', emoji: '🐉', defeats: ['Teddy', 'Alien']},
+    {name: 'Teddy', emoji: '🧸', defeats: ['Alien', 'Shroom']}
 ]
 
 selectGameType.addEventListener('click', selectGame);
 selectClassicFighter.addEventListener('click', (e) => {
-    userSelectFighter(e, classicfighters);
+    userSelectFighter(e, classicFighters);
+    initiateMatch(classicFighters);
+    renderMatch(selectClassicFighter);
 });
 selectExtendedFighter.addEventListener('click', (e) => {
     userSelectFighter(e, extendedFighters);
+    initiateMatch(extendedFighters);
+    renderMatch(selectExtendedFighter);
 });
 chooseGameBtn.addEventListener('click', returnToSelectGame);
 
@@ -50,10 +57,32 @@ function userSelectFighter(e, fighters) {
     var selectedFighter = e.target.closest('div');
     for (var i = 0; i < fighters.length; i++) {
         if (selectedFighter.id === fighters[i].name) {
-            userFighter = updateUser(fighters[i]);
+            userCurrent = updateUser(fighters[i]);
         }
     }
-    return userFighter;
+    return userCurrent;
+}
+
+function initiateMatch(fighters) {
+    compCurrent = updateComp(getRandomFighter(fighters));
+    checkForVictory(userCurrent, compCurrent);
+}
+
+function renderMatch(game) {
+        toggleDisplay(game);
+        if (userCurrent.victor) {
+            banner.innerText = `${userCurrent.name} Wins!`
+        } else if (compCurrent.victor) {
+            banner.innerText = `${compCurrent.name} Wins!`
+        } else {
+            banner.innerText = 'Draw';
+        }
+        userWins.innerText = userCurrent.wins;
+        compWins.innerText = compCurrent.wins;
+        toggleDisplay(matchOutcome);
+        matchOutcome.innerHTML += `
+            <div>${userCurrent.currentFighter.emoji}</div>
+            <div>${compCurrent.currentFighter.emoji}</div>`
 }
 
 function returnToSelectGame() {
@@ -86,14 +115,15 @@ function updateUser(currentFighter, wins = 0, name = 'Human') {
 }
 
 function checkForVictory(user, comp) {
+    if (user.currentFighter.name === comp.currentFighter.name) return;
     if (user.currentFighter.defeats.includes(comp.currentFighter.name)) {
         user.victor = true;
-        user.wins++;
-        console.log('user');
+        user.wins += 1;
+        return user;
     } else if (comp.currentFighter.defeats.includes(user.currentFighter.name)) {
         comp.victor = true;
-        comp.wins++
-        console.log('comp')
+        comp.wins += 1;
+        return comp;
     }
 }
 
