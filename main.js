@@ -1,8 +1,7 @@
 var selectGameType = document.querySelector('.select-game-container');
-var classicGame = document.querySelector('#classicGame');
-var extendedGame = document.querySelector('#extendedGame');
 var selectClassicFighter = document.querySelector('#classicFighters');
 var selectExtendedFighter = document.querySelector('#extendedFighters');
+var banner = document.querySelector('#banner');
 var chooseGameBtn = document.querySelector('#chooseGameBtn');
 var resetScoreBtn = document.querySelector('#resetScoreBtn');
 
@@ -15,7 +14,7 @@ var classicfighters = [
     {name: 'Paper', defeats: ['Rock']},
 ]
 
-var expandedFighters = [
+var extendedFighters = [
     {name: 'Alien', defeats: ['Shroom', 'Diamond']},
     {name: 'Shroom', defeats: ['Diamond', 'Dragon']},
     {name: 'Diamond', defeats: ['Dragon', 'Teddy']},
@@ -24,22 +23,41 @@ var expandedFighters = [
 ]
 
 selectGameType.addEventListener('click', selectGame);
+selectClassicFighter.addEventListener('click', (e) => {
+    userSelectFighter(e, classicfighters);
+});
+selectExtendedFighter.addEventListener('click', (e) => {
+    userSelectFighter(e, extendedFighters);
+});
 chooseGameBtn.addEventListener('click', returnToSelectGame);
 
 function selectGame(e) {
     var selectedGame = e.target.closest('article');
     if (selectedGame.id === 'classicGame') {
+        banner.innerText = "Choose Your Fighter!"
         toggleDisplay(selectGameType);
         toggleDisplay(selectClassicFighter);
         toggleDisplay(chooseGameBtn);
     } else if (selectedGame.id === 'extendedGame') {
+        banner.innerText = "Choose Your Fighter!"
         toggleDisplay(selectGameType);
         toggleDisplay(selectExtendedFighter);
         toggleDisplay(chooseGameBtn);
     }
 }
 
+function userSelectFighter(e, fighters) {
+    var selectedFighter = e.target.closest('div');
+    for (var i = 0; i < fighters.length; i++) {
+        if (selectedFighter.id === fighters[i].name) {
+            userFighter = updateUser(fighters[i]);
+        }
+    }
+    return userFighter;
+}
+
 function returnToSelectGame() {
+    banner.innerText = "Choose Your Game!"
     toggleDisplay(selectGameType);
     toggleDisplay(chooseGameBtn);
     if (!selectClassicFighter.classList.contains('hidden')) {
