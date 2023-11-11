@@ -12,6 +12,9 @@ var expandedFighters = [
     {name: 'Teddy', defeats: ['Alien', 'Shroom']}
 ]
 
+var userPick;
+var compPick;
+
 function updateComp(currentFighter, wins = 0,) {
     return {
         name: 'Steve',
@@ -30,8 +33,16 @@ function updateUser(currentFighter, wins = 0, name = 'Human') {
     }
 }
 
+function checkForVictory(user, comp) {
+    if (user.currentFighter.defeats.includes(comp.currentFighter.name)) {
+        user.victor = true;
+        user.wins++;
+    } else if (comp.currentFighter.defeats.includes(user.currentFighter.name)) {
+        computer.victor = true;
+        computer.wins++
+    }
+}
+
 function getRandomFighter(fighters) {
     return fighters[Math.floor(Math.random() * fighters.length)]
 }
-
-
