@@ -8,9 +8,6 @@ var userWins = document.querySelector('#userWins');
 var compWins = document.querySelector('#compWins');
 var resetScoreBtn = document.querySelector('#resetScoreBtn');
 
-// var userCurrent;
-// var compCurrent;
-
 var user = {
     name: 'Human',
     currentFighter: null,
@@ -40,6 +37,7 @@ var extendedFighters = [
 ]
 
 chooseGameBtn.addEventListener('click', returnToSelectGame);
+resetScoreBtn.addEventListener('click', resetScore);
 selectGameType.addEventListener('click', selectGame);
 selectClassicFighter.addEventListener('click', (e) => {
     userSelectFighter(e, classicFighters);
@@ -58,11 +56,13 @@ function selectGame(e) {
     var selectedGame = e.target.closest('article');
     if (selectedGame.id === 'classicGame') {
         banner.innerText = "Choose Your Fighter!"
+        showResetScoreBtn();
         toggleDisplay(selectGameType);
         toggleDisplay(selectClassicFighter);
         toggleDisplay(chooseGameBtn);
     } else if (selectedGame.id === 'extendedGame') {
         banner.innerText = "Choose Your Fighter!"
+        showResetScoreBtn();
         toggleDisplay(selectGameType);
         toggleDisplay(selectExtendedFighter);
         toggleDisplay(chooseGameBtn);
@@ -82,7 +82,6 @@ function userSelectFighter(e, fighters) {
 function initiateMatch(fighters) {
     comp.currentFighter = getRandomFighter(fighters);
     checkForVictory(user, comp);
-
 }
 
 function renderMatch(game) {
@@ -93,8 +92,8 @@ function renderMatch(game) {
     } else {
         banner.innerText = 'Draw';
     }
-    userWins.innerText = user.wins;
-    compWins.innerText = comp.wins;
+    showResetScoreBtn()
+    keepScore();
     toggleDisplay(game);
     toggleDisplay(matchOutcome);
     matchOutcome.innerHTML += `
@@ -104,6 +103,7 @@ function renderMatch(game) {
 
 function resetMatch(game) {
     setTimeout(() => {
+        showResetScoreBtn();
         matchOutcome.innerHTML = '';
         banner.innerText = 'Choose Your Fighter';
         user.victor = false;
@@ -115,6 +115,7 @@ function resetMatch(game) {
 
 function returnToSelectGame() {
     banner.innerText = "Choose Your Game!"
+    showResetScoreBtn();
     toggleDisplay(selectGameType);
     toggleDisplay(chooseGameBtn);
     if (!selectClassicFighter.classList.contains('hidden')) {
@@ -124,15 +125,35 @@ function returnToSelectGame() {
     }
 }
 
+function keepScore() {
+    userWins.innerText = user.wins;
+    compWins.innerText = comp.wins;
+}
+
+function resetScore() {
+    user.wins = 0;
+    comp.wins = 0;
+    keepScore();
+    showResetScoreBtn();
+}
+
+function showResetScoreBtn() {
+    if (user.wins > 0 || comp.wins > 0) {
+        resetScoreBtn.classList.remove('hidden');
+    } else {
+        resetScoreBtn.classList.add('hidden');
+    }
+}
+
 function checkForVictory() {
     if (user.currentFighter.name === comp.currentFighter.name) return;
     if (user.currentFighter.defeats.includes(comp.currentFighter.name)) {
         user.victor = true;
-        user.wins += 1;
+        user.wins++;
         return user;
     } else if (comp.currentFighter.defeats.includes(user.currentFighter.name)) {
         comp.victor = true;
-        comp.wins += 1;
+        comp.wins++;
         return comp;
     }
 }
