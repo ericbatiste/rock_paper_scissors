@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="main.js" defer ></script>
     <title>Rock Paper Scissors</title>
 </head>
 <body>
@@ -13,19 +14,23 @@
     </header>
     
     <section class="player-info-container" id="playerUser">
-        <h2 class="player-header">Human</h2>
-        <p class="score">Wins:<br><span class="number">0</span></p>
+        <form class="hidden" id="userForm">
+            <input type="text" id="userInput" placeholder="Add Your Name!" autocomplete="off" />
+            <input type="submit" value="+" />
+        </form>
+        <h2 class="player-header" id="addName">Human<br>"You"</h2>
+        <p class="score">Wins:<br><span class="number" id="userWins">0</span></p>
     </section>
     
     <section class="player-info-container" id="playerComp">
-        <h2 class="player-header">Computer</h2>
-        <p class="score">Wins:<br><span class="number">0</span></p>
+        <h2 class="player-header">Computer<br>"Steve"</h2>
+        <p class="score">Wins:<br><span class="number" id="compWins">0</span></p>
     </section>
 
     <main class="game-container">
-        <h2>Choose your game!</h2>
-        <section class="choose-game-container">
-            <article class="game-choice" id="chooseClassicGame">
+        <h2 id="banner">Choose your game!</h2>
+        <section class="select-game-container">
+            <article class="game-choice" id="classicGame">
                 <h3>Classic</h3>
                 <p>
                     Rock > Scissors<br>
@@ -34,7 +39,7 @@
                 </p>
             </article>
             
-            <article class="game-choice" id="chooseVariationGame">
+            <article class="game-choice" id="extendedGame">
                 <h3>Extended</h3>
                 <p>
                     Alien > Shroom & Diamond<br>
@@ -46,26 +51,26 @@
             </article>
         </section>
 
-        <section class="choose-token-container hidden" id="chooseClassicToken">
-            <div class="token">🪨</div>
-            <div class="token">📄</div>
-            <div class="token">✂️</div>
+        <section class="select-fighter-container hidden" id="classicFighters">
+            <div class="fighter" id="Rock">🪨</div>
+            <div class="fighter" id="Paper">📄</div>
+            <div class="fighter" id="Scissors">✂️</div>
         </section>
         
-        <section class="choose-token-container hidden" id="chooseVariationToken">
-            <div class="token">👽</div>
-            <div class="token">🍄</div>
-            <div class="token">💎</div>
-            <div class="token">🐉</div>
-            <div class="token">🧸</div>
+        <section class="select-fighter-container hidden" id="extendedFighters">
+            <div class="fighter" id="Alien">👽</div>
+            <div class="fighter" id="Shroom">🍄</div>
+            <div class="fighter" id="Diamond">💎</div>
+            <div class="fighter" id="Dragon">🐉</div>
+            <div class="fighter" id="Teddy">🧸</div>
         </section>
 
+        <section class="match-outcome hidden"></section>
+
     </main>
-    
-
     <footer>
-
+        <button class="btn hidden" id="chooseGameBtn">Choose Game</button>
+        <button class="btn hidden" id="resetScoreBtn">Reset Score</button>
     </footer>
-
 </body>
 </html>
