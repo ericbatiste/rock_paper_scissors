@@ -8,8 +8,22 @@ var userWins = document.querySelector('#userWins');
 var compWins = document.querySelector('#compWins');
 var resetScoreBtn = document.querySelector('#resetScoreBtn');
 
-var userCurrent;
-var compCurrent;
+// var userCurrent;
+// var compCurrent;
+
+var user = {
+    name: 'Human',
+    currentFighter: null,
+    wins: 0,
+    victor: false
+}
+
+var comp = {
+    name: 'Steve',
+    currentFighter: null,
+    wins: 0,
+    victor: false
+}
 
 var classicFighters = [
     {name: 'Rock', emoji: '🪨', defeats: ['Scissors']},
@@ -25,18 +39,20 @@ var extendedFighters = [
     {name: 'Teddy', emoji: '🧸', defeats: ['Alien', 'Shroom']}
 ]
 
+chooseGameBtn.addEventListener('click', returnToSelectGame);
 selectGameType.addEventListener('click', selectGame);
 selectClassicFighter.addEventListener('click', (e) => {
     userSelectFighter(e, classicFighters);
     initiateMatch(classicFighters);
     renderMatch(selectClassicFighter);
+    resetMatch(selectClassicFighter);
 });
 selectExtendedFighter.addEventListener('click', (e) => {
     userSelectFighter(e, extendedFighters);
     initiateMatch(extendedFighters);
     renderMatch(selectExtendedFighter);
+    resetMatch(selectExtendedFighter);
 });
-chooseGameBtn.addEventListener('click', returnToSelectGame);
 
 function selectGame(e) {
     var selectedGame = e.target.closest('article');
@@ -57,32 +73,44 @@ function userSelectFighter(e, fighters) {
     var selectedFighter = e.target.closest('div');
     for (var i = 0; i < fighters.length; i++) {
         if (selectedFighter.id === fighters[i].name) {
-            userCurrent = updateUser(fighters[i]);
+            user.currentFighter = fighters[i];
         }
     }
-    return userCurrent;
+    return user;
 }
 
 function initiateMatch(fighters) {
-    compCurrent = updateComp(getRandomFighter(fighters));
-    checkForVictory(userCurrent, compCurrent);
+    comp.currentFighter = getRandomFighter(fighters);
+    checkForVictory(user, comp);
+
 }
 
 function renderMatch(game) {
-        toggleDisplay(game);
-        if (userCurrent.victor) {
-            banner.innerText = `${userCurrent.name} Wins!`
-        } else if (compCurrent.victor) {
-            banner.innerText = `${compCurrent.name} Wins!`
-        } else {
-            banner.innerText = 'Draw';
-        }
-        userWins.innerText = userCurrent.wins;
-        compWins.innerText = compCurrent.wins;
+    if (user.victor) {
+        banner.innerText = `${user.name} Wins!`
+    } else if (comp.victor) {
+        banner.innerText = `${comp.name} Wins!`
+    } else {
+        banner.innerText = 'Draw';
+    }
+    userWins.innerText = user.wins;
+    compWins.innerText = comp.wins;
+    toggleDisplay(game);
+    toggleDisplay(matchOutcome);
+    matchOutcome.innerHTML += `
+    <div>${user.currentFighter.emoji}</div>
+    <div>${comp.currentFighter.emoji}</div>`
+}
+
+function resetMatch(game) {
+    setTimeout(() => {
+        matchOutcome.innerHTML = '';
+        banner.innerText = 'Choose Your Fighter';
+        user.victor = false;
+        comp.victor = false;
         toggleDisplay(matchOutcome);
-        matchOutcome.innerHTML += `
-            <div>${userCurrent.currentFighter.emoji}</div>
-            <div>${compCurrent.currentFighter.emoji}</div>`
+        toggleDisplay(game);
+    }, 1500);
 }
 
 function returnToSelectGame() {
@@ -96,25 +124,7 @@ function returnToSelectGame() {
     }
 }
 
-function updateComp(currentFighter, wins = 0,) {
-    return {
-        name: 'Steve',
-        currentFighter,
-        wins,
-        victor: false
-    }
-}
-
-function updateUser(currentFighter, wins = 0, name = 'Human') {
-    return {
-        name,
-        currentFighter,
-        wins,
-        victor: false
-    }
-}
-
-function checkForVictory(user, comp) {
+function checkForVictory() {
     if (user.currentFighter.name === comp.currentFighter.name) return;
     if (user.currentFighter.defeats.includes(comp.currentFighter.name)) {
         user.victor = true;
