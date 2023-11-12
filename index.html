@@ -14,7 +14,11 @@
     </header>
     
     <section class="player-info-container" id="playerUser">
-        <h2 class="player-header">Human</h2>
+        <form class="hidden" id="userForm">
+            <input type="text" id="userInput" placeholder="Add Your Name!" autocomplete="off" />
+            <input type="submit" value="+" />
+        </form>
+        <h2 class="player-header" id="addName">Human<br>"You"</h2>
         <p class="score">Wins:<br><span class="number" id="userWins">0</span></p>
     </section>
     

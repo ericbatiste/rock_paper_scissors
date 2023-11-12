@@ -41,7 +41,11 @@ header {
     margin: 20px;
     border: 1px solid black;
     text-align: center;
-    gap: 40%;
+    gap: 30%;
+}
+
+#addName {
+    cursor: pointer;
 }
 
 .score {

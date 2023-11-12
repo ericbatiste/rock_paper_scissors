@@ -1,3 +1,6 @@
+var addUserName = document.querySelector('#addName');
+var userNameForm = document.querySelector('#userForm')
+var userNameInput = document.querySelector('#userInput')
 var banner = document.querySelector('#banner');
 var selectGameType = document.querySelector('.select-game-container');
 var selectClassicFighter = document.querySelector('#classicFighters');
@@ -36,6 +39,8 @@ var extendedFighters = [
     {name: 'Teddy', emoji: '🧸', defeats: ['Alien', 'Shroom']}
 ]
 
+addUserName.addEventListener('click', renderUserInput);
+userNameForm.addEventListener('submit', renderUserName)
 chooseGameBtn.addEventListener('click', returnToSelectGame);
 resetScoreBtn.addEventListener('click', resetScore);
 selectGameType.addEventListener('click', selectGame);
@@ -51,6 +56,22 @@ selectExtendedFighter.addEventListener('click', (e) => {
     renderMatch(selectExtendedFighter);
     resetMatch(selectExtendedFighter);
 });
+
+function renderUserName(e) {
+    e.preventDefault();
+    if (userNameInput.value === '') return;
+    user.name = userNameInput.value;
+    addUserName.innerText = user.name;
+    console.log(user);
+    renderUserInput();
+    return user;
+}
+
+function renderUserInput() {
+    toggleDisplay(addUserName);
+    toggleDisplay(userNameForm);
+}
+
 
 function selectGame(e) {
     var selectedGame = e.target.closest('article');
@@ -85,6 +106,13 @@ function initiateMatch(fighters) {
 }
 
 function renderMatch(game) {
+    showResetScoreBtn()
+    renderScore();
+    toggleDisplay(game);
+    toggleDisplay(matchOutcome);
+    matchOutcome.innerHTML += `
+    <div>${user.currentFighter.emoji}</div>
+    <div>${comp.currentFighter.emoji}</div>`
     if (user.victor) {
         banner.innerText = `${user.name} Wins!`
     } else if (comp.victor) {
@@ -92,13 +120,6 @@ function renderMatch(game) {
     } else {
         banner.innerText = 'Draw';
     }
-    showResetScoreBtn()
-    keepScore();
-    toggleDisplay(game);
-    toggleDisplay(matchOutcome);
-    matchOutcome.innerHTML += `
-    <div>${user.currentFighter.emoji}</div>
-    <div>${comp.currentFighter.emoji}</div>`
 }
 
 function resetMatch(game) {
@@ -125,7 +146,7 @@ function returnToSelectGame() {
     }
 }
 
-function keepScore() {
+function renderScore() {
     userWins.innerText = user.wins;
     compWins.innerText = comp.wins;
 }
@@ -133,7 +154,7 @@ function keepScore() {
 function resetScore() {
     user.wins = 0;
     comp.wins = 0;
-    keepScore();
+    renderScore();
     showResetScoreBtn();
 }
 
