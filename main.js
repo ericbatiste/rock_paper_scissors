@@ -1,6 +1,11 @@
+var title = document.querySelector('h1');
+var stary = document.querySelector('body');
+var staryBackdrop = document.querySelector('#nightSky');
+var userInfoContainer = document.querySelector('#playerUser');
+var compInfoContainer = document.querySelector('#playerComp');
 var addUserName = document.querySelector('#addName');
-var userNameForm = document.querySelector('#userForm')
-var userNameInput = document.querySelector('#userInput')
+var userNameForm = document.querySelector('#userForm');
+var userNameInput = document.querySelector('#userInput');
 var banner = document.querySelector('#banner');
 var selectGameType = document.querySelector('.select-game-container');
 var selectClassicFighter = document.querySelector('#classicFighters');
@@ -26,21 +31,21 @@ var comp = {
 }
 
 var classicFighters = [
-    {name: 'Rock', emoji: '🪨', defeats: ['Scissors']},
-    {name: 'Scissors', emoji: '✂️', defeats: ['Paper']},
-    {name: 'Paper', emoji: '📄', defeats: ['Rock']},
+    {name: 'Rock', icon: 'assets/Rock.png', defeats: ['Scissors']},
+    {name: 'Scissors', icon: 'assets/Scissors.png', defeats: ['Paper']},
+    {name: 'Paper', icon: 'assets/Paper.png', defeats: ['Rock']},
 ]
 
 var extendedFighters = [
-    {name: 'Alien', emoji: '👽', defeats: ['Shroom', 'Diamond']},
-    {name: 'Shroom', emoji: '🍄', defeats: ['Diamond', 'Dragon']},
-    {name: 'Diamond', emoji: '💎', defeats: ['Dragon', 'Teddy']},
-    {name: 'Dragon', emoji: '🐉', defeats: ['Teddy', 'Alien']},
-    {name: 'Teddy', emoji: '🧸', defeats: ['Alien', 'Shroom']}
+    {name: 'Gemini', icon: 'assets/Gemini.png', defeats: ['Leo', 'Sagittarius']},
+    {name: 'Leo', icon: 'assets/Leo.png', defeats: ['Sagittarius', 'Scorpio']},
+    {name: 'Sagittarius', icon: 'assets/Sagittarius.png', defeats: ['Scorpio', 'Virgo']},
+    {name: 'Scorpio', icon: 'assets/Scorpio.png', defeats: ['Virgo', 'Gemini']},
+    {name: 'Virgo', icon: 'assets/Virgo.png', defeats: ['Gemini', 'Leo']}
 ]
 
 addUserName.addEventListener('click', renderUserInput);
-userNameForm.addEventListener('submit', renderUserName)
+userNameForm.addEventListener('submit', renderUserName);
 chooseGameBtn.addEventListener('click', returnToSelectGame);
 resetScoreBtn.addEventListener('click', resetScore);
 selectGameType.addEventListener('click', selectGame);
@@ -72,17 +77,18 @@ function renderUserInput() {
     toggleDisplay(userNameForm);
 }
 
-
 function selectGame(e) {
     var selectedGame = e.target.closest('article');
     if (selectedGame.id === 'classicGame') {
-        banner.innerText = "Choose Your Fighter!"
+        banner.innerText = "Choose your Fighter!";
+        renderClassic();
         showResetScoreBtn();
         toggleDisplay(selectGameType);
         toggleDisplay(selectClassicFighter);
         toggleDisplay(chooseGameBtn);
     } else if (selectedGame.id === 'extendedGame') {
-        banner.innerText = "Choose Your Fighter!"
+        banner.innerText = "Choose your Fighter!";
+        renderStary();
         showResetScoreBtn();
         toggleDisplay(selectGameType);
         toggleDisplay(selectExtendedFighter);
@@ -106,19 +112,19 @@ function initiateMatch(fighters) {
 }
 
 function renderMatch(game) {
-    showResetScoreBtn()
+    showResetScoreBtn();
     renderScore();
     toggleDisplay(game);
     toggleDisplay(matchOutcome);
     matchOutcome.innerHTML += `
-    <div>${user.currentFighter.emoji}</div>
-    <div>${comp.currentFighter.emoji}</div>`
+    <div> <img src=${user.currentFighter.icon}> </div>
+    <div> <img src=${comp.currentFighter.icon}> </div>`;
     if (user.victor) {
-        banner.innerText = `${user.name} Wins!`
+        banner.innerText = `${user.name} Wins!`;
     } else if (comp.victor) {
-        banner.innerText = `${comp.name} Wins!`
+        banner.innerText = `${comp.name} Wins!`;
     } else {
-        banner.innerText = 'Draw';
+        banner.innerText = 'Draw!';
     }
 }
 
@@ -126,21 +132,22 @@ function resetMatch(game) {
     setTimeout(() => {
         showResetScoreBtn();
         matchOutcome.innerHTML = '';
-        banner.innerText = 'Choose Your Fighter';
+        banner.innerText = 'Choose your Fighter!';
         user.victor = false;
         comp.victor = false;
         toggleDisplay(matchOutcome);
         toggleDisplay(game);
-    }, 1500);
+    }, 1800);
 }
 
 function returnToSelectGame() {
-    banner.innerText = "Choose Your Game!"
+    banner.innerText = "Choose your Game!";
+    renderClassic();
     showResetScoreBtn();
     toggleDisplay(selectGameType);
     toggleDisplay(chooseGameBtn);
     if (!selectClassicFighter.classList.contains('hidden')) {
-        selectClassicFighter.classList.add('hidden')
+        selectClassicFighter.classList.add('hidden');
     } else if (!selectExtendedFighter.classList.contains('hidden')) {
         selectExtendedFighter.classList.add('hidden');
     }
@@ -180,7 +187,25 @@ function checkForVictory() {
 }
 
 function getRandomFighter(fighters) {
-    return fighters[Math.floor(Math.random() * fighters.length)]
+    return fighters[Math.floor(Math.random() * fighters.length)];
+}
+
+function renderStary() {
+    stary.classList.add('stary');
+    title.classList.add('stary');
+    banner.classList.add('stary');
+    userInfoContainer.classList.add('stary');
+    compInfoContainer.classList.add('stary');
+    nightSky.classList.remove('hidden');
+}
+
+function renderClassic() {
+    stary.classList.remove('stary');
+    title.classList.remove('stary');
+    banner.classList.remove('stary');
+    userInfoContainer.classList.remove('stary');
+    compInfoContainer.classList.remove('stary');
+    nightSky.classList.add('hidden');
 }
 
 function toggleDisplay(element) {
