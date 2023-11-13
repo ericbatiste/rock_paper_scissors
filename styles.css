@@ -27,7 +27,7 @@ body {
     grid-template-columns: 1fr 4fr 1fr;
 }
 
-body.stary {
+body.starry {
     background: linear-gradient(black, rgb(73, 73, 225), rgb(211, 126, 140));
 }
 
@@ -42,7 +42,7 @@ h1 {
     font-size: 4.8rem;
 }
 
-h1.stary {
+h1.starry {
     color: white;
 }
 
@@ -50,7 +50,7 @@ h2 {
     font-size: 1.8rem;
 }
 
-h2.stary {
+h2.starry {
     color: white;
 }
 
@@ -78,7 +78,7 @@ h3 {
     color: white;
 }
 
-.player-info-container.stary {
+.player-info-container.starry {
     background-color: rgba(255, 255, 255, 0.30);
     color: black;
 }

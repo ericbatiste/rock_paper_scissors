@@ -1,6 +1,6 @@
 var title = document.querySelector('h1');
-var stary = document.querySelector('body');
-var staryBackdrop = document.querySelector('#nightSky');
+var starry = document.querySelector('body');
+var starryBackdrop = document.querySelector('#nightSky');
 var userInfoContainer = document.querySelector('#playerUser');
 var compInfoContainer = document.querySelector('#playerComp');
 var addUserName = document.querySelector('#addName');
@@ -15,34 +15,6 @@ var chooseGameBtn = document.querySelector('#chooseGameBtn');
 var userWins = document.querySelector('#userWins');
 var compWins = document.querySelector('#compWins');
 var resetScoreBtn = document.querySelector('#resetScoreBtn');
-
-var user = {
-    name: 'Human',
-    currentFighter: null,
-    wins: 0,
-    victor: false
-}
-
-var comp = {
-    name: 'Steve',
-    currentFighter: null,
-    wins: 0,
-    victor: false
-}
-
-var classicFighters = [
-    {name: 'Rock', icon: 'assets/Rock.png', defeats: ['Scissors']},
-    {name: 'Scissors', icon: 'assets/Scissors.png', defeats: ['Paper']},
-    {name: 'Paper', icon: 'assets/Paper.png', defeats: ['Rock']},
-]
-
-var extendedFighters = [
-    {name: 'Gemini', icon: 'assets/Gemini.png', defeats: ['Leo', 'Sagittarius']},
-    {name: 'Leo', icon: 'assets/Leo.png', defeats: ['Sagittarius', 'Scorpio']},
-    {name: 'Sagittarius', icon: 'assets/Sagittarius.png', defeats: ['Scorpio', 'Virgo']},
-    {name: 'Scorpio', icon: 'assets/Scorpio.png', defeats: ['Virgo', 'Gemini']},
-    {name: 'Virgo', icon: 'assets/Virgo.png', defeats: ['Gemini', 'Leo']}
-]
 
 addUserName.addEventListener('click', renderUserInput);
 userNameForm.addEventListener('submit', renderUserName);
@@ -88,7 +60,7 @@ function selectGame(e) {
         toggleDisplay(chooseGameBtn);
     } else if (selectedGame.id === 'extendedGame') {
         banner.innerText = "Choose your Fighter!";
-        renderStary();
+        renderstarry();
         showResetScoreBtn();
         toggleDisplay(selectGameType);
         toggleDisplay(selectExtendedFighter);
@@ -190,21 +162,21 @@ function getRandomFighter(fighters) {
     return fighters[Math.floor(Math.random() * fighters.length)];
 }
 
-function renderStary() {
-    stary.classList.add('stary');
-    title.classList.add('stary');
-    banner.classList.add('stary');
-    userInfoContainer.classList.add('stary');
-    compInfoContainer.classList.add('stary');
+function renderstarry() {
+    starry.classList.add('starry');
+    title.classList.add('starry');
+    banner.classList.add('starry');
+    userInfoContainer.classList.add('starry');
+    compInfoContainer.classList.add('starry');
     nightSky.classList.remove('hidden');
 }
 
 function renderClassic() {
-    stary.classList.remove('stary');
-    title.classList.remove('stary');
-    banner.classList.remove('stary');
-    userInfoContainer.classList.remove('stary');
-    compInfoContainer.classList.remove('stary');
+    starry.classList.remove('starry');
+    title.classList.remove('starry');
+    banner.classList.remove('starry');
+    userInfoContainer.classList.remove('starry');
+    compInfoContainer.classList.remove('starry');
     nightSky.classList.add('hidden');
 }
 
