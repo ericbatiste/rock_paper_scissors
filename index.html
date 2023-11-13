@@ -4,31 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
     <script type="text/javascript" src="main.js" defer ></script>
     <title>Rock Paper Scissors</title>
 </head>
-<body>
-    
+<body class="">
+    <img class="hidden" src="assets/NightSky.png" id="nightSky" alt="Night Sky">
     <header>
         <h1>Rock Paper Scissors</h1>
     </header>
     
     <section class="player-info-container" id="playerUser">
         <form class="hidden" id="userForm">
-            <input type="text" id="userInput" placeholder="Add Your Name!" autocomplete="off" />
-            <input type="submit" value="+" />
+            <input type="text" id="userInput" placeholder="Add your name!" autocomplete="off" />
+            <input type="submit" value="+" id="submitBtn" />
         </form>
-        <h2 class="player-header" id="addName">Human<br>"You"</h2>
+        <h2 class="player-header" id="addName">Human</h2>
         <p class="score">Wins:<br><span class="number" id="userWins">0</span></p>
     </section>
     
     <section class="player-info-container" id="playerComp">
-        <h2 class="player-header">Computer<br>"Steve"</h2>
+        <h2 class="player-header">"Steve"</h2>
         <p class="score">Wins:<br><span class="number" id="compWins">0</span></p>
     </section>
 
     <main class="game-container">
-        <h2 id="banner">Choose your game!</h2>
+        <h2 id="banner">Choose your Game!</h2>
         <section class="select-game-container">
             <article class="game-choice" id="classicGame">
                 <h3>Classic</h3>
@@ -40,29 +43,45 @@
             </article>
             
             <article class="game-choice" id="extendedGame">
-                <h3>Extended</h3>
+                <h3>Stary Night Edition</h3>
                 <p>
-                    Alien > Shroom & Diamond<br>
-                    Shroom > Diamond & Dragon<br>
-                    Diamond > Dragon & Teddy<br>
-                    Dragon > Teddy & Alien<br>
-                    Teddy > Alien & Shroom
+                    Gemini > Leo + Sagittarius <br>
+                    Leo > Sagittarius + Scorpio <br>
+                    Sagittarius > Scorpio + Virgo <br>
+                    Scorpio > Virgo + Gemini <br>
+                    Virgo > Gemini + Leo
                 </p>
             </article>
         </section>
 
         <section class="select-fighter-container hidden" id="classicFighters">
-            <div class="fighter" id="Rock">🪨</div>
-            <div class="fighter" id="Paper">📄</div>
-            <div class="fighter" id="Scissors">✂️</div>
+            <div class="fighter" id="Rock">
+                <img src="assets/Rock.png" alt="Hand gesture for rock">
+            </div>
+            <div class="fighter" id="Paper">
+                <img src="assets/Paper.png" alt="Hand gesture for paper">
+            </div>
+            <div class="fighter" id="Scissors">
+                <img src="assets/Scissors.png" alt="Hand gesture for scissors">
+            </div>
         </section>
         
         <section class="select-fighter-container hidden" id="extendedFighters">
-            <div class="fighter" id="Alien">👽</div>
-            <div class="fighter" id="Shroom">🍄</div>
-            <div class="fighter" id="Diamond">💎</div>
-            <div class="fighter" id="Dragon">🐉</div>
-            <div class="fighter" id="Teddy">🧸</div>
+            <div class="fighter" id="Gemini">
+                <img src="assets/Gemini.png" alt="Gemini constellation">
+            </div>
+            <div class="fighter" id="Leo">
+                <img src="assets/Leo.png" alt="Leo constellation">
+            </div>
+            <div class="fighter" id="Sagittarius">
+                <img src="assets/Sagittarius.png" alt="Sagittarius constellation">
+            </div>
+            <div class="fighter" id="Scorpio">
+                <img src="assets/Scorpio.png" alt="Scorpio constellation">
+            </div>
+            <div class="fighter" id="Virgo">
+                <img src="assets/Virgo.png" alt="Virgo constellation">
+            </div>
         </section>
 
         <section class="match-outcome hidden"></section>
