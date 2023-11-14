@@ -16,7 +16,7 @@ body {
     "user  game  comp"
     "user footer comp";
   grid-template-rows: 1.2fr 6fr 1fr;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 4.5fr 1fr;
 }
 
 header {
@@ -75,8 +75,7 @@ h3 {
 }
 
 #addName:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2.5px;
+  transform: scale(1.2);
 }
 
 #userInput {
@@ -84,14 +83,19 @@ h3 {
   background: none;
   border-bottom: 2.5px solid white;
   color: white;
-  padding: 8px;
+  padding-top: 12px;
+}
+
+#userInput::placeholder {
+  font-size: 1.25rem;
+  color: white;
+  opacity: 80%;
 }
 
 #submitBtn {
-  position: absolute;
   border: none;
   background: none;
-  font-size: 2rem;
+  font-size: 2.8rem;
   color: white;
   cursor: pointer;
 }
@@ -180,8 +184,8 @@ footer {
 }
 
 .btn {
-  padding: 6px 18px;
-  font-size: 1.8rem;
+  padding: 4px 10px;
+  font-size: 1.6rem;
   border: none;
   border: 2px solid black;
   border-radius: 10px;
@@ -207,7 +211,7 @@ footer {
   z-index: -1;
   width: 100vw;
   height: 100vh;
-  opacity: 90%;
+  opacity: 80%;
 }
 
 body.starry {
@@ -234,6 +238,11 @@ h2.starry {
 #userInput.starry {
   color: black;
   border-bottom: 2.5px solid black;
+}
+
+#userInput.starry::placeholder {
+    color: black;
+    opacity: 100%;
 }
 
 #submitBtn.starry {

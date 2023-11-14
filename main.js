@@ -17,7 +17,7 @@ var userWins = document.querySelector("#userWins");
 var compWins = document.querySelector("#compWins");
 var resetScoreBtn = document.querySelector("#resetScoreBtn");
 
-addUserName.addEventListener("click", renderUserInput);
+addUserName.addEventListener("click", toggleUserInput);
 userNameForm.addEventListener("submit", renderUserName);
 chooseGameBtn.addEventListener("click", returnToSelectGame);
 resetScoreBtn.addEventListener("click", resetScore);
@@ -37,7 +37,7 @@ selectExtendedFighter.addEventListener("click", (e) => {
   resetMatch(selectExtendedFighter);
 });
 
-function renderUserInput() {
+function toggleUserInput() {
   toggleDisplay(addUserName);
   toggleDisplay(userNameForm);
 }
@@ -47,8 +47,7 @@ function renderUserName(e) {
   if (userNameInput.value === "") return;
   user.name = userNameInput.value;
   addUserName.innerText = user.name;
-  console.log(user);
-  renderUserInput();
+  toggleUserInput();
   return user;
 }
 

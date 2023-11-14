@@ -1,34 +1,34 @@
 var user = {
-  name: "Human",
-  currentFighter: null,
-  wins: 0,
-  victor: false,
-};
+    name: "Human",
+    currentFighter: null,
+    wins: 0,
+    victor: false
+  }
 
 var comp = {
-  name: "Steve",
-  currentFighter: null,
-  wins: 0,
-  victor: false,
-};
+    name: "Steve",
+    currentFighter: null,
+    wins: 0,
+    victor: false
+  }
 
 var classicFighters = [
   {
-    name: "Rock", 
-    icon: "assets/Rock.png", 
+    name: "Rock",
+    icon: "assets/Rock.png",
     defeats: ["Scissors"]
   },
   {
-    name: "Scissors", 
-    icon: "assets/Scissors.png", 
+    name: "Scissors",
+    icon: "assets/Scissors.png",
     defeats: ["Paper"]
   },
   {
     name: "Paper",
-    icon: "assets/Paper.png", 
+    icon: "assets/Paper.png",
     defeats: ["Rock"]
-  }
-];
+  },
+]
 
 var extendedFighters = [
   {
@@ -36,9 +36,9 @@ var extendedFighters = [
     icon: "assets/Gemini.png",
     defeats: ["Leo", "Sagittarius"]
   },
-  { 
-    name: "Leo", 
-    icon: "assets/Leo.png", 
+  {
+    name: "Leo",
+    icon: "assets/Leo.png",
     defeats: ["Sagittarius", "Scorpio"]
   },
   {
@@ -46,14 +46,14 @@ var extendedFighters = [
     icon: "assets/Sagittarius.png",
     defeats: ["Scorpio", "Virgo"]
   },
-  { 
-    name: "Scorpio", 
-    icon: "assets/Scorpio.png", 
-    defeats: ["Virgo", "Gemini"] 
+  {
+    name: "Scorpio",
+    icon: "assets/Scorpio.png",
+    defeats: ["Virgo", "Gemini"]
   },
-  { 
-    name: "Virgo", 
-    icon: "assets/Virgo.png", 
+  {
+    name: "Virgo",
+    icon: "assets/Virgo.png",
     defeats: ["Gemini", "Leo"]
   }
-];
+]
