@@ -6,6 +6,7 @@ var compInfoContainer = document.querySelector("#playerComp");
 var addUserName = document.querySelector("#addName");
 var userNameForm = document.querySelector("#userForm");
 var userNameInput = document.querySelector("#userInput");
+var userNameSubmit = document.querySelector("#submitBtn")
 var banner = document.querySelector("#banner");
 var selectGameType = document.querySelector(".select-game-container");
 var selectClassicFighter = document.querySelector("#classicFighters");
@@ -16,7 +17,7 @@ var userWins = document.querySelector("#userWins");
 var compWins = document.querySelector("#compWins");
 var resetScoreBtn = document.querySelector("#resetScoreBtn");
 
-addUserName.addEventListener("click", renderUserInput);
+addUserName.addEventListener("click", toggleUserInput);
 userNameForm.addEventListener("submit", renderUserName);
 chooseGameBtn.addEventListener("click", returnToSelectGame);
 resetScoreBtn.addEventListener("click", resetScore);
@@ -36,7 +37,7 @@ selectExtendedFighter.addEventListener("click", (e) => {
   resetMatch(selectExtendedFighter);
 });
 
-function renderUserInput() {
+function toggleUserInput() {
   toggleDisplay(addUserName);
   toggleDisplay(userNameForm);
 }
@@ -46,8 +47,7 @@ function renderUserName(e) {
   if (userNameInput.value === "") return;
   user.name = userNameInput.value;
   addUserName.innerText = user.name;
-  console.log(user);
-  renderUserInput();
+  toggleUserInput();
   return user;
 }
 
@@ -173,6 +173,8 @@ function renderstarry() {
   banner.classList.add("starry");
   userInfoContainer.classList.add("starry");
   compInfoContainer.classList.add("starry");
+  userNameInput.classList.add("starry");
+  userNameSubmit.classList.add("starry");
   nightSky.classList.remove("hidden");
 }
 
@@ -182,6 +184,8 @@ function renderClassic() {
   banner.classList.remove("starry");
   userInfoContainer.classList.remove("starry");
   compInfoContainer.classList.remove("starry");
+  userNameInput.classList.remove("starry");
+  userNameSubmit.classList.remove("starry");
   nightSky.classList.add("hidden");
 }
 
