@@ -1,100 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Julius+Sans+One&display=swap" rel="stylesheet">
     <script type="text/javascript" src="main.js" defer ></script>
     <script type="text/javascript" src="data.js" defer ></script>
     <title>Rock Paper Scissors</title>
-</head>
-<body class="">
-    
-    <img class="hidden" src="assets/NightSky.png" id="nightSky" alt="Night Sky">
-    
+  </head>
+  <body class="">
+    <img
+      class="hidden"
+      src="assets/NightSky.png"
+      id="nightSky"
+      alt="Night Sky"
+    />
+
     <header>
-        <h1>Rock Paper Scissors</h1>
+      <h1>Rock Paper Scissors</h1>
     </header>
-    
+
     <section class="player-info-container" id="playerUser">
-        <form class="hidden" id="userForm">
-            <input type="text" id="userInput" placeholder="Add your name!" autocomplete="off" />
-            <input type="submit" value="+" id="submitBtn" />
-        </form>
-        <h2 class="player-header" id="addName">Human</h2>
-        <p class="score">Wins:<br><span class="number" id="userWins">0</span></p>
+      <form class="hidden" id="userForm">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Add your name!"
+          autocomplete="off"
+        />
+        <input type="submit" value="+" id="submitBtn" />
+      </form>
+      <h2 class="player-header" id="addName">Human</h2>
+      <p class="score">
+        Wins:<br /><span class="number" id="userWins">0</span>
+      </p>
     </section>
-    
+
     <section class="player-info-container" id="playerComp">
-        <h2 class="player-header">"Steve"</h2>
-        <p class="score">Wins:<br><span class="number" id="compWins">0</span></p>
+      <h2 class="player-header">"Steve"</h2>
+      <p class="score">
+        Wins:<br /><span class="number" id="compWins">0</span>
+      </p>
     </section>
 
     <main class="game-container">
-        
-        <h2 id="banner">Choose your Game!</h2>
-        
-        <section class="select-game-container">
-            <article class="game-choice" id="classicGame">
-                <h3>Classic</h3>
-                <p>
-                    Rock > Scissors<br>
-                    Scissors > Paper<br>
-                    Paper > Rock
-                </p>
-            </article>
-            
-            <article class="game-choice" id="extendedGame">
-                <h3>Starry Night Edition</h3>
-                <p>
-                    Gemini > Leo + Sagittarius <br>
-                    Leo > Sagittarius + Scorpio <br>
-                    Sagittarius > Scorpio + Virgo <br>
-                    Scorpio > Virgo + Gemini <br>
-                    Virgo > Gemini + Leo
-                </p>
-            </article>
-        </section>
+      <h2 id="banner">Choose your Game!</h2>
 
-        <section class="select-fighter-container hidden" id="classicFighters">
-            <div class="fighter" id="Rock">
-                <img src="assets/Rock.png" alt="Hand gesture for rock">
-            </div>
-            <div class="fighter" id="Paper">
-                <img src="assets/Paper.png" alt="Hand gesture for paper">
-            </div>
-            <div class="fighter" id="Scissors">
-                <img src="assets/Scissors.png" alt="Hand gesture for scissors">
-            </div>
-        </section>
-        
-        <section class="select-fighter-container hidden" id="extendedFighters">
-            <div class="fighter" id="Gemini">
-                <img src="assets/Gemini.png" alt="Gemini constellation">
-            </div>
-            <div class="fighter" id="Leo">
-                <img src="assets/Leo.png" alt="Leo constellation">
-            </div>
-            <div class="fighter" id="Sagittarius">
-                <img src="assets/Sagittarius.png" alt="Sagittarius constellation">
-            </div>
-            <div class="fighter" id="Scorpio">
-                <img src="assets/Scorpio.png" alt="Scorpio constellation">
-            </div>
-            <div class="fighter" id="Virgo">
-                <img src="assets/Virgo.png" alt="Virgo constellation">
-            </div>
-        </section>
+      <section class="select-game-container">
+        <article class="game-choice" id="classicGame">
+          <h3>Classic</h3>
+          <p>
+            Rock > Scissors<br />
+            Scissors > Paper<br />
+            Paper > Rock
+          </p>
+        </article>
 
-        <section class="match-outcome hidden"></section>
+        <article class="game-choice" id="extendedGame">
+          <h3>Starry Night Edition</h3>
+          <p>
+            Gemini > Leo + Sagittarius <br />
+            Leo > Sagittarius + Scorpio <br />
+            Sagittarius > Scorpio + Virgo <br />
+            Scorpio > Virgo + Gemini <br />
+            Virgo > Gemini + Leo
+          </p>
+        </article>
+      </section>
 
+      <section class="select-fighter-container hidden" id="classicFighters">
+        <div class="fighter" id="Rock">
+          <img src="assets/Rock.png" alt="Hand gesture for rock" />
+        </div>
+        <div class="fighter" id="Paper">
+          <img src="assets/Paper.png" alt="Hand gesture for paper" />
+        </div>
+        <div class="fighter" id="Scissors">
+          <img src="assets/Scissors.png" alt="Hand gesture for scissors" />
+        </div>
+      </section>
+
+      <section class="select-fighter-container hidden" id="extendedFighters">
+        <div class="fighter" id="Gemini">
+          <img src="assets/Gemini.png" alt="Gemini constellation" />
+        </div>
+        <div class="fighter" id="Leo">
+          <img src="assets/Leo.png" alt="Leo constellation" />
+        </div>
+        <div class="fighter" id="Sagittarius">
+          <img src="assets/Sagittarius.png" alt="Sagittarius constellation" />
+        </div>
+        <div class="fighter" id="Scorpio">
+          <img src="assets/Scorpio.png" alt="Scorpio constellation" />
+        </div>
+        <div class="fighter" id="Virgo">
+          <img src="assets/Virgo.png" alt="Virgo constellation" />
+        </div>
+      </section>
+
+      <section class="match-outcome hidden"></section>
     </main>
     <footer>
-        <button class="btn hidden" id="chooseGameBtn">Choose Game</button>
-        <button class="btn hidden" id="resetScoreBtn">Reset Score</button>
+      <button class="btn hidden" id="chooseGameBtn">Choose Game</button>
+      <button class="btn hidden" id="resetScoreBtn">Reset Score</button>
     </footer>
-</body>
+  </body>
 </html>
