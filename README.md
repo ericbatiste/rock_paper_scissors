@@ -11,7 +11,7 @@ For the extended version of the game, I'm ustilizeng just five constellations wh
 One thing that I love about this project is that I my wife, Emily, designed the images used and they really take the visual aesthetic of the project to the next level. You can check out some more of her work at www.studiomente.com.  A challenge that I faced: when initialy designing the data model I was using functions to create objects to store the user and computer information, including number of wins. When it came time to render the score to each players respective container the function would reset the scores to zero each time. I solved this by creating static objects in the place of functions. I think this way makes more sense for this project but I also feel that the dynamic nature of using a function is probably preferred in most scenarios.
 
 # The Application
-[](https://ericbatiste.github.io/rock_paper_scissors/)
+[Link Deployed Game.](https://ericbatiste.github.io/rock_paper_scissors/)
 
 https://github.com/ericbatiste/rock_paper_scissors/assets/83373107/e59ae44e-9e17-473d-9e14-a84920fbf504
 
